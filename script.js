@@ -114,7 +114,7 @@ async function getTemperature(city) {
     }
 
     const data = await response.json();
-    const temperature = data.weather[0].maxtempC;
+    const temperature = data.current_condition[0].temp_C;
     const wh_desc = data.current_condition[0].weatherDesc[0].value;
     const coordinates = [data.nearest_area[0].latitude, data.nearest_area[0].longitude];
     return { city, temperature, coordinates, wh_desc };
@@ -181,6 +181,16 @@ async function getTemperature(city) {
     else{
         unknown = true;
     }
+
+    if(temperature > 0 && temperature <= 15){
+      iconpath = "media/cold.png"
+    }
+
+    if(temperature < 0){
+      iconpath = "media/below0.png"
+    }
+
+
 
     if (unknown == true){
       const customIconFalse = L.icon({
@@ -286,6 +296,14 @@ legend.onAdd = function (map) {
     <div>
      <img src="media/ditto.png"/>
       <span>Unknown</span>
+    </div>
+    <div>
+     <img src="media/cold.png"/>
+      <span>Cold (0-15ºC)</span>
+    </div>
+    <div>
+     <img src="media/below0.png"/>
+      <span>Under 0</span>
     </div>
   `;
   return div;
