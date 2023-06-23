@@ -1,0 +1,25 @@
+.legend {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.legend img {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+.legend span {
+  vertical-align: middle;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
